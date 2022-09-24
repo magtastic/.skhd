@@ -1,0 +1,2 @@
+# .skhd
+Skhd config files
