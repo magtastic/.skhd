@@ -1,3 +1,6 @@
+# YABAI: Restart 
+alt - r : yabai --restart-service
+
 # YABAI: Window Navigation
 alt - h : yabai -m window --focus west 
 alt - l : yabai -m window --focus east
@@ -19,7 +22,6 @@ alt + ctrl + shift - k : yabai -m window --move rel:0:-20
 # YABAI: Display Focus Toggle
 alt - tab : yabai -m display --focus recent
 alt + shift  - tab : yabai -m space --display recent 
-
 
 # YABAI: Space Navigation
 alt + shift - l : yabai -m space --focus next || yabai -m space --focus first
@@ -52,26 +54,19 @@ alt + ctrl  - 8 : yabai -m window --space 8;\
 alt + ctrl  - 9 : yabai -m window --space 9;\
                   yabai -m space --focus 9
 
-
 # YABAI: Flip Space
 alt - f : yabai -m space --mirror y-axis
-
 
 # YABAI: Toggle Sticky
 alt + shift - s : yabai -m window --toggle sticky
 alt - s : yabai -m window --toggle float
 
-
 # YABAI: Space Creation
 alt - return : yabai -m space --create;\
-                  index="$(yabai -m query --spaces --display | jq 'map(select(."is-native-fullscreen" == false))[-1].index')";\
-                  yabai -m window --space $index;\
-                  yabai -m space --focus $index
+               index="$(yabai -m query --spaces --display | jq 'map(select(."is-native-fullscreen" == false))[-1].index')";\
+               yabai -m window --space $index;\
+               yabai -m space --focus $index
 
 alt + shift - return : yabai -m space --create && \
-                index="$(yabai -m query --spaces --display | jq 'map(select(."is-native-fullscreen" == false))[-1].index')";\
-                yabai -m space --focus "${index}"
-
-
-# YABAI: Restart 
-alt - r : launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"
+                       index="$(yabai -m query --spaces --display | jq 'map(select(."is-native-fullscreen" == false))[-1].index')";\
+                       yabai -m space --focus "${index}"
